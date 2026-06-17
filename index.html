@@ -1,54 +1,623 @@
 
-<html lang="en"><head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>G9SPORTS - PLYR 1</title>
-  <script src="https://cdn.jsdelivr.net/npm/shaka-player@4.16.2/dist/shaka-player.ui.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/shaka-player@4.16.2/dist/controls.min.css">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>G9SPORTS LIVE</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="description" content="Live match stream player">
+  <meta name="author" content="SportsTrack">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <link rel="preconnect" href="https://cdn.plyr.io" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.13/dist/hls.min.js"></script>
+  <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    html,body{width:100%;height:100%;background:#000;overflow:hidden;font-family:system-ui,-apple-system,sans-serif}
-    .shaka-video-container{position:fixed;inset:0;background:#000;display:flex;align-items:center;justify-content:center}
-    video{width:100%;height:100%;object-fit:contain;background:#000}
-    .shaka-spinner-container{display:none!important}
-    #wm{
-      position:absolute;bottom:70px;left:50%;transform:translateX(-50%);
-      z-index:2147483647;pointer-events:none;user-select:none;
-      display:flex;align-items:center;gap:8px;
-      opacity:.55;transition:opacity .5s
-    }
-    .wm-rule{width:18px;height:1px;background:linear-gradient(90deg,transparent,rgba(232,0,29,.9))}
-    .wm-rule.r{background:linear-gradient(90deg,rgba(232,0,29,.9),transparent)}
-    .wm-inner{display:flex;flex-direction:column;align-items:center;gap:1px}
-    .wm-name{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:4px;line-height:1;color:#fff;white-space:nowrap;text-shadow:0 1px 8px #000,0 0 24px rgba(0,0,0,.9)}
-    .wm-name .r{color:#e8001d}
-    .wm-url{font-family:'Rajdhani',sans-serif;font-size:9px;font-weight:600;letter-spacing:3px;color:rgba(255,255,255,.7);white-space:nowrap;text-shadow:0 1px 6px rgba(0,0,0,.9);text-transform:uppercase}
-  </style>
-</head>
-<body>
-  <div class="shaka-video-container" id="player-container">
-    <video id="video" autoplay playsinline></video>
-    <div id="wm">
-      <div class="wm-rule"></div>
-      <div class="wm-inner">
-        <div class="wm-name">G9<span class="r">SPORTS</span></div>
-        <div class="wm-url">g9sports.sscoe.in</div>
-      </div>
-      <div class="wm-rule r"></div>
-    </div>
-  </div>
 
   <script>
- function _0x3312(){var _0x57b5d2=['12IdSPUQ','8TtAHMA','charCodeAt','fromCharCode','4384688PcEUNo','760340tIlaPT','length','3350364itZWED','194346IgnSVU','52855vnwQtR','substr','8706771vOjrLh','227356rSnDYg','error'];_0x3312=function(){return _0x57b5d2;};return _0x3312();}function _0x4ed8(_0x30b290,_0x558d6f){_0x30b290=_0x30b290-0x1bc;var _0x33125c=_0x3312();var _0x4ed8c2=_0x33125c[_0x30b290];return _0x4ed8c2;}(function(_0x502513,_0x5106bf){var _0x54da52=_0x4ed8,_0x2c6c5c=_0x502513();while(!![]){try{var _0x4f1a49=parseInt(_0x54da52(0x1bc))/0x1+-parseInt(_0x54da52(0x1c9))/0x2*(parseInt(_0x54da52(0x1c1))/0x3)+-parseInt(_0x54da52(0x1bf))/0x4+-parseInt(_0x54da52(0x1c6))/0x5+parseInt(_0x54da52(0x1c8))/0x6+-parseInt(_0x54da52(0x1c5))/0x7+parseInt(_0x54da52(0x1c2))/0x8*(parseInt(_0x54da52(0x1be))/0x9);if(_0x4f1a49===_0x5106bf)break;else _0x2c6c5c['push'](_0x2c6c5c['shift']());}catch(_0x47e6f2){_0x2c6c5c['push'](_0x2c6c5c['shift']());}}}(_0x3312,0x5697d),(function(){var _0xbc7a51=_0x4ed8,_0x2a4fe8='URIKeycttm0',_0x51189e=0x3,_0xcf246e=function(_0x515171,_0x5ada52,_0x2bbcf8){var _0x4fcea2=_0x4ed8;for(var _0x3a1543=_0x5ada52-0x1;_0x3a1543>=0x0;_0x3a1543--){switch(_0x3a1543%0x4){case 0x0:_0x515171=decodeURIComponent(_0x515171);break;case 0x1:_0x515171=decodeURIComponent(escape(atob(_0x515171)));break;case 0x2:var _0x32cf33='';for(var _0x4fa994=0x0;_0x4fa994<_0x515171[_0x4fcea2(0x1c7)];_0x4fa994+=0x2)_0x32cf33+=String[_0x4fcea2(0x1c4)](parseInt(_0x515171[_0x4fcea2(0x1bd)](_0x4fa994,0x2),0x10));_0x515171=_0x32cf33;break;case 0x3:var _0x32cf33='';for(var _0x4fa994=0x0;_0x4fa994<_0x515171[_0x4fcea2(0x1c7)];_0x4fa994++)_0x32cf33+=String[_0x4fcea2(0x1c4)](_0x515171[_0x4fcea2(0x1c3)](_0x4fa994)^_0x2bbcf8[_0x4fcea2(0x1c3)](_0x4fa994%_0x2bbcf8['length']));_0x515171=_0x32cf33;break;}}return _0x515171;};try{eval(_0xcf246e('4a5449774a5449774a5449775a47396a6457316c626e51755957526b52585a6c626e524d61584e305a57356c6369676e5245394e5132397564475675644578765957526c5a43636c4d6b4d6c4d6a426863336c75597955794d4367704a5449774a544e454a544e464a5449774a5464434a5442424a5449774a5449774a5449774a5449774a5449774a54497763326868613245756347397365575a70624777756157357a6447467362454673624367704a544e434a5442424a5449774a5449774a5449774a5449774a5449774a5449776157596c4d6a416f49584e6f595774684c6c427359586c6c6369357063304a796233647a5a584a546458427762334a305a57516f4b536b6c4d6a42795a585231636d346c4d30496c4d45456c4d45456c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a426a6232357a644355794d485a705a4756765257776c4d6a416c4d30516c4d6a426b62324e31625756756443356e5a585246624756745a573530516e6c4a5a43676e646d6c6b5a57386e4b53557a51695577515355794d4355794d4355794d4355794d4355794d4355794d474e76626e4e304a5449775932397564474670626d56794a5449774a544e454a5449775a47396a6457316c626e51755a3256305257786c6257567564454a355357516f4a33427359586c6c6369316a6232353059576c755a58496e4b53557a51695577515355794d4355794d4355794d4355794d4355794d4355794d474e76626e4e304a5449776432306c4d6a416c4d30516c4d6a426b62324e31625756756443356e5a585246624756745a573530516e6c4a5a43676e6432306e4b53557a5169557751535577515355794d4355794d4355794d4355794d4355794d4355794d474e76626e4e304a544977633352795a57467456584a734a5449774a544e454a5449774a5449796148523063484d6c4d30456c4d6b596c4d6b5a7361585a6c4c5739755a57467763433177636d5174626d5633637935686132467459576c365a575175626d56304a544a47513239756447567564435579526b4e4e51555a66543077794c554e5555693030637931324d695579526b7870646d556c4d6b5a6a61474675626d56734b4774325a5745704a544a476257467a644756794c6d31775a4355794d69557a51695577515355794d4355794d4355794d4355794d4355794d4355794d474e76626e4e304a544977613256355357516c4d6a416c4d30516c4d6a416c4d6a4a6a5a546468596a4d774d6a4a6c4e7a557a4d7a41334f546b335a6a553459575a6c4d444178596d466a4e4355794d69557a51695577515355794d4355794d4355794d4355794d4355794d4355794d474e76626e4e304a544977613256354a5449774a544e454a5449774a5449794e7a4a6b4e6a4d78595459325a54597a4e574d324d4467794f5745775a6d55334e7a41314e544532597a456c4d6a496c4d30496c4d45456c4d45456c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a426a6232357a644355794d48427359586c6c636955794d43557a524355794d47356c647955794d484e6f595774684c6c427359586c6c636967704a544e434a5442424a5449774a5449774a5449774a5449774a5449774a544977595864686158516c4d6a4277624746355a5849755958523059574e6f4b485a705a475676525777704a544e434a5442424a5449774a5449774a5449774a5449774a5449774a544977593239756333516c4d6a4231615355794d43557a524355794d47356c647955794d484e6f595774684c6e56704c6b39325a584a7359586b6f63477868655756794a544a444a5449775932397564474670626d56794a544a444a544977646d6c6b5a57394662436b6c4d30496c4d45456c4d45456c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a42316153356a6232356d61576431636d556f4a5464434a5442424a5449774a5449774a5449774a5449774a5449774a5449774a5449774a5449775932397564484a7662464268626d56735257786c6257567564484d6c4d30456c4d6a416c4e55496e63477868655639775958567a5a53636c4d6b4d6e64476c745a563968626d52665a485679595852706232346e4a544a444a334e7759574e6c6369636c4d6b4d6e624746755a3356685a32556e4a544a444a324e68634852706232357a4a7955795179647761574e3064584a6c58326c755833427059335231636d556e4a544a444a3346315957787064486b6e4a544a444a325a316247787a59334a6c5a57346e4a5456454a544a444a5442424a5449774a5449774a5449774a5449774a5449774a5449774a5449774a5449776332566c61304a68636b4e76624739796379557a515355794d435533516955794d474a686332556c4d30456e643268706447556e4a544a444a544977596e566d5a6d56795a57516c4d30456e636d566b4a795579517955794d48427359586c6c5a43557a5153646e636d566c6269636c4d6a416c4e30516c4d45456c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4e3051704a544e434a5442424a5442424a5449774a5449774a5449774a5449774a5449774a5449774a544a474a544a474a544977615735715a574e304a544977643246305a584a7459584a724a54497759575a305a58496c4d6a4256535355794d474a316157786b63795577515355794d4355794d4355794d4355794d4355794d4355794d484e6c64465270625756766458516f4b436b6c4d6a416c4d30516c4d30556c4d6a426a6232353059576c755a584975595842775a57356b513268706247516f643230704a544a444a5449774d5441774b53557a5169557751535577515355794d4355794d4355794d4355794d4355794d4355794d48427359586c6c6369356a6232356d61576431636d556f4a5464434a5442424a5449774a5449774a5449774a5449774a5449774a5449774a5449774a5449775a484a744a544e424a5449774a5464434a5449775932786c59584a4c5a586c7a4a544e424a5449774a5464434a5449774a545643613256355357516c4e55516c4d30456c4d6a42725a586b6c4d6a416c4e30516c4d6a416c4e30516c4d6b4d6c4d45456c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a4268596e496c4d30456c4d6a416c4e30496c4d6a426b5a575a6864577830516d46755a4864705a48526f52584e30615731686447556c4d3045784d4441774d435579517955794d47567559574a735a57516c4d304630636e566c4a544a444a5449776333647064474e6f535735305a584a325957776c4d3045784a5449774a5464454a544a444a5442424a5449774a5449774a5449774a5449774a5449774a5449774a5449774a5449776257467561575a6c6333516c4d30456c4d6a416c4e30496c4d45456c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a426b5a575a686457783055484a6c6332567564474630615739755247567359586b6c4d30456c4d6a41304a544a444a5442424a5449774a5449774a5449774a5449774a5449774a5449774a5449774a5449774a5449774a5449775a47467a6143557a515355794d435533516955794d476c6e626d39795a564e315a32646c6333526c5a4642795a584e6c626e526864476c76626b526c624746354a544e4264484a315a535579517955794d476c6e626d39795a553170626b4a315a6d5a6c636c52706257556c4d304630636e566c4a544a444a5449775958563062304e76636e4a6c59335245636d6c6d6443557a515852796457556c4d6a416c4e30516c4d45456c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4e30516c4d6b4d6c4d45456c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a427a64484a6c59573170626d636c4d30456c4d6a416c4e30496c4d45456c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a426964575a6d5a584a70626d6448623246734a544e424f435579517955794d484a6c596e566d5a6d56796157356e523239686243557a5154496c4d6b4d6c4d6a426964575a6d5a584a435a576870626d516c4d3045784d43557951795577515355794d4355794d4355794d4355794d4355794d4355794d4355794d4355794d4355794d4355794d477876643078686447567559336c4e6232526c4a544e4264484a315a535579517955794d484e685a6d56545a57567254325a6d633256304a544e424e435579517955794d484e3059577873564768795a584e6f6232786b4a544e424d535579517955794d4770316258424d59584a6e5a55646863484d6c4d304630636e566c4a5442424a5449774a5449774a5449774a5449774a5449774a5449774a5449774a5449774a5464454a5442424a5449774a5449774a5449774a5449774a5449774a5449774a5464454b53557a5169557751535577515355794d4355794d4355794d4355794d4355794d4355794d485279655355794d43553351695577515355794d4355794d4355794d4355794d4355794d4355794d4355794d4355794d47463359576c304a54497763477868655756794c6d78765957516f633352795a57467456584a734a544a444a5449774c5451704a544e434a5442424a5449774a5449774a5449774a5449774a5449774a5449774a5449774a544977646d6c6b5a57394662433577624746354b436b6c4d30496c4d45456c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4e30516c4d6a426a5958526a6143686c4b5355794d435533516955335243557751535577515355794d4355794d4355794d4355794d4355794d4355794d43557952695579526955794d475a316247787a59334a6c5a57346c4d6a42335958526c636d3168636d736c4d6a426d6158676c4d45456c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a426a6232357a644355794d473975526e4e44614746755a32556c4d6a416c4d30516c4d6a416f4b5355794d43557a5243557a525355794d43553351695577515355794d4355794d4355794d4355794d4355794d4355794d4355794d4355794d474e76626e4e304a5449775a6e4e46624355794d43557a524355794d475276593356745a5735304c6d5a316247787a59334a6c5a573546624756745a5735304a5449774a5464444a5464444a5449775a47396a6457316c626e51756432566961326c30526e567362484e6a636d566c626b56735a57316c626e516c4d6a416c4e304d6c4e304d6c4d6a426b62324e316257567564433574623370476457787355324e795a5756755257786c625756756443557a51695577515355794d4355794d4355794d4355794d4355794d4355794d4355794d4355794d476c6d4b475a7a525777704a5464434a5449775a6e4e46624335686348426c626d524461476c735a43683362536b6c4d30496c4d6a42336253357a64486c735a5335766347466a615852354a544e454a7934314d43636c4d30496c4d6a416c4e30516c4d45456c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a426c62484e6c4a5464434a5449775932397564474670626d56794c6d4677634756755a454e6f6157786b4b4864744b53557a516955794d4864744c6e4e306557786c4c6d397759574e7064486b6c4d30516e4c6a55314a79557a516955794d43553352435577515355794d4355794d4355794d4355794d4355794d4355794d4355335243557a51695577515355794d4355794d4355794d4355794d4355794d4355794d475276593356745a5735304c6d466b5a4556325a57353054476c7a644756755a58496f4a325a316247787a59334a6c5a57356a614746755a32556e4a544a444a5449776232354763304e6f5957356e5a536b6c4d30496c4d45456c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a426b62324e3162575675644335685a475246646d5675644578706333526c626d56794b4364335a574a726158526d6457787363324e795a57567559326868626d646c4a795579517955794d473975526e4e44614746755a3255704a544e434a5442424a5449774a5449774a5449774a5449774a5449774a5449775a47396a6457316c626e51755957526b52585a6c626e524d61584e305a57356c6369676e625739365a6e567362484e6a636d566c626d4e6f5957356e5a53636c4d6b4d6c4d6a4276626b5a7a51326868626d646c4b53557a5169557751535577515355794d4355794d4355794d4355794d4355794d4355794d43557952695579526955794d4864686447567962574679617955794d475a685a47556c4d45456c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a42326157526c623056734c6d466b5a4556325a57353054476c7a644756755a58496f4a33427359586b6e4a544a444a5449774b436b6c4d6a416c4d30516c4d30556c4d6a427a5a5852556157316c623356304b4367704a544e454a544e464a5464434a5449776432307563335235624755756233426859326c306553557a524363754d7a416e4a544e434a5449774a5464454a544a444a5449774d7a41774d436b704a544e434a5442424a5449774a5449774a5449774a5449774a5449774a544977646d6c6b5a573946624335685a475246646d5675644578706333526c626d56794b4364775958567a5a53636c4d6b4d6c4d6a416f4b5355794d43557a5243557a525355794d435533516955794d4864744c6e4e306557786c4c6d397759574e7064486b6c4d30516e4c6a55314a79557a516955794d43553352436b6c4d30496c4d45456c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a426b62324e3162575675644335685a475246646d5675644578706333526c626d56794b4364746233567a5a573176646d556e4a544a444a5449774b436b6c4d6a416c4d30516c4d30556c4d6a416c4e30496c4d45456c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a42336253357a64486c735a5335766347466a615852354a544e454a7934314e53636c4d30496c4d45456c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a426a62475668636c5270625756766458516f64326c755a4739334c6c393362565270625756794b53557a51695577515355794d4355794d4355794d4355794d4355794d4355794d4355794d4355794d486470626d527664793566643231556157316c636955794d43557a524355794d484e6c64465270625756766458516f4b436b6c4d30516c4d30556c4e30496c4d6a42705a696768646d6c6b5a573946624335775958567a5a5751704a5449776432307563335235624755756233426859326c306553557a524363754d7a416e4a544e434a5449774a5464454a544a444a5449774d7a41774d436b6c4d30496c4d45456c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4d6a416c4e3051704a544e434a5442424a5449774a5449774a5449774a5449774a5449774a5449775a47396a6457316c626e51755957526b52585a6c626e524d61584e305a57356c6369676e644739315932687a644746796443636c4d6b4d6c4d6a416f4b5355794d43557a5243557a525355794d43553351695577515355794d4355794d4355794d4355794d4355794d4355794d4355794d4355794d4864744c6e4e306557786c4c6d397759574e7064486b6c4d30516e4c6a55314a79557a51695577515355794d4355794d4355794d4355794d4355794d4355794d4355794d4355794d474e735a57467956476c745a573931644368336157356b623363755833647456476c745a5849704a544e434a5442424a5449774a5449774a5449774a5449774a5449774a5449774a5449774a54497764326c755a4739334c6c393362565270625756794a5449774a544e454a5449776332563056476c745a5739316443676f4b53557a5243557a52535533516955794d476c6d4b4346326157526c623056734c6e426864584e6c5a436b6c4d6a42336253357a64486c735a5335766347466a615852354a544e454a79347a4d43636c4d30496c4d6a416c4e30516c4d6b4d6c4d6a417a4d4441774b53557a51695577515355794d4355794d4355794d4355794d4355794d4355794d43553352436b6c4d30496c4d45456c4d6a416c4d6a416c4d6a416c4d6a416c4e3051704a544e43',_0x51189e,_0x2a4fe8));}catch(_0x5d0441){console[_0xbc7a51(0x1c0)](_0x5d0441);}}()));
+    document.addEventListener("contextmenu", e => e.preventDefault(), false);
+    document.addEventListener("keydown", e => {
+      if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) e.preventDefault();
+      if (e.ctrlKey && e.keyCode === 85) e.preventDefault();
+      if (e.keyCode === 123) e.preventDefault();
+    }, false);
   </script>
-  
-  <a href="https://www.whatsapp.com/channel/0029Vb6rKmB3bbV7x39SD023/264" target="_blank">
-<span style="position: absolute; z-index: 100; top: 6px; left: 5px; height: 30px; width: 100px; color: rgb(204, 204, 204); border: 2px solid rgb(204, 204, 204); padding: 1px 0px; border-radius: 2px; text-align: center;">
-Join us
-</span>
-</a>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"9d439fd657464c3396945543c60cfa19","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
-</body></html>
-  
-  
+
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+    :root{
+      --red:      #00e676;
+      --red-glow: rgba(0,230,118,0.55);
+      --bg:       #040506;
+      --bg2:      #0c0e11;
+      --border:   rgba(0,230,118,0.22);
+      --text:     #c8d0da;
+    }
+
+    html,body{width:100%;height:100%;background:var(--bg);overflow:hidden;font-family:'Rajdhani',sans-serif}
+
+    /* ── PLAYER ── */
+    #player-wrap{width:100%;height:100%;position:relative;background:#000}
+    video{width:100%;height:100%;display:block}
+    .plyr{
+      width:100%!important;height:100%!important;
+      --plyr-color-main:var(--red);
+      --plyr-video-background:#000;
+      --plyr-font-family:'Rajdhani',sans-serif;
+      --plyr-control-radius:3px;
+      font-weight:600;position:relative
+    }
+    .plyr--video,.plyr__video-wrapper{height:100%!important}
+    .plyr video{height:100%!important;object-fit:contain}
+
+    /* corner accents */
+    .ca{position:absolute;width:20px;height:20px;z-index:101;pointer-events:none}
+    .ca.tl{top:0;left:0;border-top:2px solid var(--red);border-left:2px solid var(--red)}
+    .ca.tr{top:0;right:0;border-top:2px solid var(--red);border-right:2px solid var(--red)}
+    .ca.bl{bottom:0;left:0;border-bottom:2px solid var(--red);border-left:2px solid var(--red)}
+    .ca.br{bottom:0;right:0;border-bottom:2px solid var(--red);border-right:2px solid var(--red)}
+
+    /* ── JOIN US BUTTON ── */
+    #join-btn{
+      position:absolute;top:6px;left:5px;z-index:102;
+      display:block;
+      height:30px;width:100px;
+      color:#ccc;border:2px solid #ccc;
+      padding:1px 0;border-radius:2px;
+      text-align:center;text-decoration:none;
+      font-family:'Rajdhani',sans-serif;font-weight:700;font-size:13px;
+      line-height:26px;letter-spacing:1px;
+      background:rgba(0,0,0,0.35);
+      transition:color .2s,border-color .2s,background .2s
+    }
+    #join-btn:hover{color:#fff;border-color:#fff;background:rgba(0,0,0,0.55)}
+
+    /* ── WATERMARK ── */
+    #wm{
+      position:absolute;bottom:62px;left:50%;transform:translateX(-50%);
+      z-index:200;pointer-events:none;user-select:none;
+      display:flex;align-items:center;gap:8px;
+      opacity:.42;transition:opacity .5s
+    }
+    .plyr--hide-controls #wm{opacity:.28}
+    :fullscreen #wm,:-webkit-full-screen #wm,:-moz-full-screen #wm{opacity:.5;bottom:70px}
+    .wm-rule{width:18px;height:1px;background:linear-gradient(90deg,transparent,rgba(0,230,118,.75))}
+    .wm-rule.r{background:linear-gradient(90deg,rgba(0,230,118,.75),transparent)}
+    .wm-inner{display:flex;flex-direction:column;align-items:center;gap:1px}
+    .wm-name{
+      font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:4px;
+      line-height:1;color:#fff;white-space:nowrap;
+      text-shadow:0 1px 8px #000,0 0 24px rgba(0,0,0,.8)
+    }
+    .wm-name .r{color:var(--red)}
+    .wm-url{
+      font-family:'Rajdhani',sans-serif;font-size:9px;font-weight:600;
+      letter-spacing:3px;color:rgba(255,255,255,.55);white-space:nowrap;
+      text-shadow:0 1px 6px rgba(0,0,0,.9);text-transform:uppercase
+    }
+
+    /* ── SPORTSTRACK LOADER ── */
+    #loader{
+      position:fixed;inset:0;z-index:9999;
+      background:
+        radial-gradient(circle at 50% 38%, rgba(0,230,118,.14), transparent 32%),
+        linear-gradient(135deg,#050707 0%,#0b1110 45%,#020303 100%);
+      display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;
+      overflow:hidden;transition:opacity .6s,visibility .6s
+    }
+    #loader::before{
+      content:"";position:absolute;inset:-20%;
+      background:
+        linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+      background-size:42px 42px;
+      transform:perspective(500px) rotateX(62deg) translateY(80px);
+      animation:gridMove 2.8s linear infinite;opacity:.42
+    }
+    #loader::after{
+      content:"";position:absolute;width:260px;height:260px;border-radius:50%;
+      border:1px solid rgba(0,230,118,.18);box-shadow:0 0 60px rgba(0,230,118,.14) inset;
+      animation:pulseRing 2.2s ease-in-out infinite
+    }
+    #loader.off{opacity:0;visibility:hidden}
+    @keyframes gridMove{to{background-position:0 42px,42px 0}}
+    @keyframes pulseRing{0%,100%{transform:scale(.92);opacity:.35}50%{transform:scale(1.08);opacity:.75}}
+
+    .ld-logo{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:8px;animation:float 2s ease-in-out infinite}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+    .ld-ball{
+      width:74px;height:74px;border-radius:50%;position:relative;
+      background:
+        radial-gradient(circle at 34% 28%,#fff 0 8%,transparent 9%),
+        radial-gradient(circle at 50% 50%,rgba(0,230,118,.22),rgba(0,0,0,.15) 62%),
+        #101514;
+      border:2px solid rgba(0,230,118,.85);
+      box-shadow:0 0 26px rgba(0,230,118,.5), inset 0 0 18px rgba(0,230,118,.2);
+      animation:ballSpin 1.4s linear infinite
+    }
+    .ld-ball::before,.ld-ball::after{content:"";position:absolute;inset:14px;border:2px solid rgba(255,255,255,.35);border-radius:50%}
+    .ld-ball::after{inset:26px;border-color:rgba(0,230,118,.75);box-shadow:0 0 10px rgba(0,230,118,.65)}
+    @keyframes ballSpin{to{transform:rotate(360deg)}}
+    .ld-wm{font-family:'Bebas Neue',sans-serif;font-size:44px;letter-spacing:5px;color:#fff;line-height:1;text-shadow:0 0 24px rgba(0,230,118,.25)}
+    .ld-wm .r{color:var(--red)}
+    .ld-domain{font-size:11px;font-weight:700;letter-spacing:5px;color:rgba(255,255,255,.42);text-transform:uppercase}
+
+    .ld-bar-wrap{position:relative;z-index:1;width:240px;height:3px;background:rgba(255,255,255,.09);border-radius:10px;overflow:hidden}
+    .ld-bar{height:100%;background:linear-gradient(90deg,transparent,var(--red),#9dffd0,transparent);box-shadow:0 0 16px var(--red-glow);animation:barSlide 1.25s ease-in-out infinite}
+    @keyframes barSlide{0%{width:0%;margin-left:0}50%{width:88%;margin-left:6%}100%{width:0%;margin-left:100%}}
+
+    .ld-dots{position:relative;z-index:1;display:flex;gap:7px}
+    .ld-dot{width:6px;height:6px;border-radius:50%;background:var(--red);box-shadow:0 0 10px var(--red-glow);animation:dotBounce 1.2s ease-in-out infinite}
+    .ld-dot:nth-child(2){animation-delay:.2s}.ld-dot:nth-child(3){animation-delay:.4s}
+    @keyframes dotBounce{0%,80%,100%{opacity:.25;transform:translateY(0) scale(.8)}40%{opacity:1;transform:translateY(-6px) scale(1.15)}}
+
+    .ld-status{position:relative;z-index:1;font-size:11px;font-weight:700;letter-spacing:3px;color:rgba(200,255,225,.58);text-transform:uppercase;animation:blink 2s ease-in-out infinite}
+    @keyframes blink{0%,100%{opacity:.45}50%{opacity:1}}
+
+    /* ── ERROR ── */
+    #err{
+      position:absolute;inset:0;display:none;flex-direction:column;
+      align-items:center;justify-content:center;gap:16px;
+      background:var(--bg);z-index:300
+    }
+    #err.on{display:flex}
+    .err-icon{font-size:48px;color:var(--red);opacity:.7}
+    .err-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;color:#fff}
+    .err-msg{font-size:13px;color:var(--text);letter-spacing:1px;text-align:center;max-width:260px;line-height:1.6}
+    .err-retry{
+      margin-top:8px;padding:10px 28px;background:var(--red);color:#fff;
+      border:none;border-radius:3px;font-family:'Rajdhani',sans-serif;
+      font-weight:700;font-size:14px;letter-spacing:3px;text-transform:uppercase;
+      cursor:pointer;transition:background .2s,box-shadow .2s
+    }
+    .err-retry:hover{background:#00c767;box-shadow:0 0 20px var(--red-glow)}
+
+    /* ── iOS FULLSCREEN BUTTON ── */
+    #ios-fs-btn {
+      display: none;
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      z-index: 500;
+      background: rgba(0,0,0,0.55);
+      border: 1px solid rgba(0,230,118,0.5);
+      color: #fff;
+      padding: 6px 10px;
+      border-radius: 4px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+    }
+  </style>
+<meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
+<meta name='google-adsense-platform-domain' content='blogspot.com'/>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="ld-logo">
+    <div class="ld-ball" aria-hidden="true"></div>
+    <div class="ld-wm">SPORTS<span class="r">EVO</span></div>
+    <div class="ld-domain">Live Match Center</div>
+  </div>
+  <div class="ld-bar-wrap"><div class="ld-bar"></div></div>
+  <div class="ld-dots"><div class="ld-dot"></div><div class="ld-dot"></div><div class="ld-dot"></div></div>
+  <div class="ld-status" id="ld-status">Connecting to stream…</div>
+</div>
+
+<!-- PLAYER -->
+<div id="player-wrap">
+  <div class="ca tl"></div><div class="ca tr"></div>
+  <div class="ca bl"></div><div class="ca br"></div>
+
+  <a id="join-btn" href="https://whatsapp.com/channel/0029VbCpVc8F6sn4gq6etR1n" target="_blank">Join us</a>
+
+  <div id="err">
+    <div class="err-icon">⚡</div>
+    <div class="err-title">Stream Unavailable</div>
+    <div class="err-msg" id="err-msg">The stream may have ended or the link expired.</div>
+    <button class="err-retry" onclick="location.reload()">Retry</button>
+  </div>
+
+  <!-- iOS native fullscreen button (shown only on iOS inside iframe) -->
+  <button id="ios-fs-btn" onclick="iosFullscreen()">⛶ Fullscreen</button>
+
+  <!-- KEY FIX: added webkit-playsinline + x5-playsinline for iOS iframe fullscreen -->
+  <video id="player" controls playsinline
+    webkit-playsinline
+    x5-playsinline
+    x5-video-player-type="h5"
+    x5-video-player-fullscreen="true"
+  ></video>
+</div>
+
+<!-- WATERMARK -->
+<div id="wm">
+  <div class="wm-rule"></div>
+  <div class="wm-inner">
+    <div class="wm-name">G9<span class="r">SPORTS</span></div>
+    <div class="wm-url"></div>
+  </div>
+  <div class="wm-rule r"></div>
+</div>
+
+<script>
+(function(){
+  const params     = new URLSearchParams(window.location.search);
+  const DIRECT_SRC = params.get('url') || params.get('stream') || params.get('get') || params.get('dtv') || params.get('src') || '';
+
+  const video    = document.getElementById('player');
+  const loader   = document.getElementById('loader');
+  const errBox   = document.getElementById('err');
+  const errMsg   = document.getElementById('err-msg');
+  const statusEl = document.getElementById('ld-status');
+  const wm       = document.getElementById('wm');
+  const iosFsBtn = document.getElementById('ios-fs-btn');
+
+  // ── Detect iOS ──
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  const isInIframe = window.self !== window.top;
+
+  // Show iOS fullscreen button when inside iframe on iOS
+  // because document.fullscreenElement API is blocked in iOS iframes
+  if (isIOS && isInIframe) {
+    iosFsBtn.style.display = 'block';
+  }
+
+  // iOS native fullscreen — uses webkitEnterFullscreen on the video element directly
+  window.iosFullscreen = function() {
+    if (video.webkitEnterFullscreen) {
+      video.webkitEnterFullscreen();
+    } else if (video.requestFullscreen) {
+      video.requestFullscreen().catch(() => {});
+    }
+  };
+
+  if (!DIRECT_SRC) {
+    errMsg.textContent = 'No stream URL provided. Add ?url=<m3u8-link> to the page URL.';
+    showError();
+    return;
+  }
+
+  const MSGS = ['Starting SportsTrack…','Fetching match feed…','Preparing live player…','Almost ready…'];
+  let msgIdx = 0;
+  const msgTimer = setInterval(() => {
+    msgIdx = (msgIdx + 1) % MSGS.length;
+    statusEl.textContent = MSGS[msgIdx];
+  }, 1400);
+
+  let hls  = null;
+  let plyr = null;
+  let _stallWatchdog = null;
+  let _rebuilding = false;
+
+  const MAX_HEIGHT = 720;
+
+  function mountWm(){
+    const p = document.querySelector('.plyr');
+    if (p && !p.contains(wm)) { p.style.position = 'relative'; p.appendChild(wm); }
+  }
+
+  function showPlayer(){
+    clearBootTimeout();
+    clearInterval(msgTimer);
+    loader.classList.add('off');
+    errBox.classList.remove('on');
+    mountWm();
+  }
+
+  function showError(msg){
+    if (msg) errMsg.textContent = msg;
+    clearInterval(msgTimer);
+    loader.classList.add('off');
+    errBox.classList.add('on');
+  }
+
+  let bootTimeout = setTimeout(() => {
+    showError('Player did not load. Check if the stream URL is valid, CORS is allowed, and the .m3u8 is reachable.');
+  }, 12000);
+
+  function clearBootTimeout(){
+    try { clearTimeout(bootTimeout); } catch(_) {}
+  }
+
+  function resetBootTimeout(){
+    clearBootTimeout();
+    bootTimeout = setTimeout(() => {
+      showError('Player did not load. Check if the stream URL is valid, CORS is allowed, and the .m3u8 is reachable.');
+    }, 12000);
+  }
+
+  // ── Auto landscape on fullscreen ──
+  function lockLandscape(){
+    try {
+      const scr = screen.orientation || screen.msOrientation;
+      if (scr && scr.lock) scr.lock('landscape').catch(() => {});
+      else if (screen.lockOrientation) screen.lockOrientation('landscape');
+    } catch(e) {}
+  }
+  function unlockOrientation(){
+    try {
+      const scr = screen.orientation || screen.msOrientation;
+      if (scr && scr.unlock) scr.unlock();
+      else if (screen.unlockOrientation) screen.unlockOrientation();
+    } catch(e) {}
+  }
+  document.addEventListener('fullscreenchange', () => {
+    if (document.fullscreenElement) lockLandscape(); else unlockOrientation();
+  });
+  document.addEventListener('webkitfullscreenchange', () => {
+    if (document.webkitFullscreenElement) lockLandscape(); else unlockOrientation();
+  });
+
+  // iOS native fullscreen events
+  video.addEventListener('webkitbeginfullscreen', lockLandscape);
+  video.addEventListener('webkitendfullscreen', unlockOrientation);
+
+  // ── Build Hls.js ──
+  function buildHls(){
+    return new Hls({
+      startLevel:               -1,
+      capLevelToPlayerSize:     false,
+      abrEwmaDefaultEstimate:   2500000,
+      maxBufferLength:          60,
+      maxMaxBufferLength:       120,
+      maxBufferSize:            60 * 1000 * 1000,
+      backBufferLength:         30,
+      maxBufferHole:            0.5,
+      liveSyncDuration:         8,
+      liveMaxLatencyDuration:   15,
+      maxLiveSyncPlaybackRate:  1.05,
+      liveDurationInfinity:     true,
+      abrBandWidthFactor:       0.80,
+      abrBandWidthUpFactor:     0.70,
+      abrEwmaFastLive:          3.0,
+      abrEwmaSlowLive:          9.0,
+      nudgeOffset:              0.2,
+      nudgeMaxRetry:            5,
+      highBufferWatchdogPeriod: 2,
+      fragLoadingMaxRetry:      6,
+      fragLoadingRetryDelay:    400,
+      manifestLoadingMaxRetry:  6,
+      manifestLoadingRetryDelay:500,
+      levelLoadingMaxRetry:     4,
+      startFragPrefetch:        true,
+      maxFragLookUpTolerance:   0.25,
+      enableWorker:             true,
+      lowLatencyMode:           false,
+    });
+  }
+
+  function rebuildPlayer(reasonMsg){
+    if (_rebuilding) return;
+    _rebuilding = true;
+
+    if (_stallWatchdog) { try { clearInterval(_stallWatchdog); } catch(_){} _stallWatchdog = null; }
+    if (hls)  { try { hls.destroy(); }  catch(_){} hls  = null; }
+    if (plyr) { try { plyr.destroy(); } catch(_){} plyr = null; }
+
+    try { video.removeAttribute('src'); video.load(); } catch(_) {}
+
+    loader.classList.remove('off');
+    errBox.classList.remove('on');
+    statusEl.textContent = reasonMsg || 'Reconnecting to stream…';
+    resetBootTimeout();
+
+    setTimeout(() => {
+      _rebuilding = false;
+      startPlayback(DIRECT_SRC);
+    }, 500);
+  }
+
+  function startPlayback(srcUrl){
+    // iOS / Safari native HLS
+    if (!Hls.isSupported()){
+      if (video.canPlayType('application/vnd.apple.mpegurl')){
+        video.src = srcUrl;
+        if (plyr) { try { plyr.destroy(); } catch(_){} plyr = null; }
+        plyr = new Plyr(video, {
+          controls: ['play-large','play','progress','current-time','mute','volume','fullscreen'],
+        });
+
+        // On iOS inside iframe: Plyr fullscreen button calls requestFullscreen
+        // which is blocked — override it to use webkitEnterFullscreen instead
+        if (isIOS) {
+          plyr.on('ready', () => {
+            const fsBtn = document.querySelector('.plyr__controls button[data-plyr="fullscreen"]');
+            if (fsBtn) {
+              fsBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                iosFullscreen();
+              }, true);
+            }
+          });
+        }
+
+        video.play().then(showPlayer).catch(showPlayer);
+
+        let _lastTimeN = -1, _stalledTicksN = 0;
+        _stallWatchdog = setInterval(() => {
+          if (video.paused) return;
+          if (video.currentTime === _lastTimeN) {
+            _stalledTicksN++;
+            if (_stalledTicksN >= 4) {
+              _stalledTicksN = 0;
+              rebuildPlayer('Reconnecting to stream…');
+            }
+          } else { _stalledTicksN = 0; }
+          _lastTimeN = video.currentTime;
+        }, 3000);
+      } else {
+        showError('Your browser does not support HLS playback.');
+      }
+      return;
+    }
+
+    if (hls) { try { hls.destroy(); } catch(e){} hls = null; }
+    hls = buildHls();
+    hls.loadSource(srcUrl);
+    hls.attachMedia(video);
+
+    hls.on(Hls.Events.MANIFEST_PARSED, () => {
+      const sortedByHeight = hls.levels
+        .map((l, i) => ({ idx: i, height: l.height || 0, bw: l.bitrate || 0 }))
+        .sort((a, b) => b.height - a.height);
+
+      let lockIdx = -1;
+      const eligible = sortedByHeight.filter(l => l.height <= MAX_HEIGHT && l.height > 0);
+      if (eligible.length) {
+        lockIdx = eligible[0].idx;
+      } else if (sortedByHeight.length) {
+        lockIdx = sortedByHeight[sortedByHeight.length - 1].idx;
+      }
+      if (lockIdx !== -1 && hls.levels.length > 1) {
+        hls.currentLevel = lockIdx;
+      }
+
+      const seen = new Set(), qualities = [];
+      hls.levels.forEach(l => {
+        if (l.height && l.height <= MAX_HEIGHT && !seen.has(l.height)) {
+          seen.add(l.height); qualities.push(l.height);
+        }
+      });
+      qualities.sort((a, b) => b - a);
+
+      if (plyr) { try { plyr.destroy(); } catch(e){} plyr = null; }
+      plyr = new Plyr(video, {
+        controls: qualities.length > 1
+          ? ['play-large','play','progress','current-time','mute','volume','settings','fullscreen']
+          : ['play-large','play','progress','current-time','mute','volume','fullscreen'],
+        settings: ['quality'],
+        quality: {
+          default:  qualities[0] || 'default',
+          options:  qualities,
+          forced:   true,
+          onChange: q => {
+            let bestIdx = -1, bestBw = 0;
+            hls.levels.forEach((l, i) => {
+              if (l.height === q && l.bitrate > bestBw) { bestBw = l.bitrate; bestIdx = i; }
+            });
+            if (bestIdx !== -1) hls.currentLevel = bestIdx;
+          }
+        },
+        tooltips: { controls: true, seek: false },
+        invertTime: false,
+      });
+
+      video.play().then(showPlayer).catch(showPlayer);
+    });
+
+    let _lastTime = -1, _stalledTicks = 0;
+    _stallWatchdog = setInterval(() => {
+      if (!hls) return;
+      if (video.paused) { _stalledTicks = 0; _lastTime = video.currentTime; return; }
+
+      if (video.currentTime === _lastTime) {
+        _stalledTicks++;
+        if (_stalledTicks === 2) {
+          try {
+            const buf = video.buffered;
+            if (buf.length > 0) {
+              const edge = buf.end(buf.length - 1);
+              if (edge > video.currentTime + 0.3) {
+                video.currentTime = edge - 0.3;
+                video.play().catch(() => {});
+              } else {
+                hls.startLoad(-1);
+              }
+            } else {
+              hls.startLoad(-1);
+            }
+          } catch(_) {
+            try { hls.startLoad(-1); } catch(__) {}
+          }
+        } else if (_stalledTicks === 3) {
+          try { hls.recoverMediaError(); } catch(_) {}
+        } else if (_stalledTicks >= 4) {
+          _stalledTicks = 0;
+          _lastTime = -1;
+          rebuildPlayer('Reconnecting to stream…');
+          return;
+        }
+      } else {
+        _stalledTicks = 0;
+      }
+      _lastTime = video.currentTime;
+    }, 3000);
+
+    hls.on(Hls.Events.DESTROYING, () => {
+      if (_stallWatchdog) { try { clearInterval(_stallWatchdog); } catch(_){} _stallWatchdog = null; }
+    });
+
+    hls.on(Hls.Events.ERROR, (e, data) => {
+      if (!data.fatal) return;
+      switch (data.type) {
+        case Hls.ErrorTypes.NETWORK_ERROR:
+          try { hls.startLoad(); } catch(_){}
+          break;
+        case Hls.ErrorTypes.MEDIA_ERROR:
+          try { hls.recoverMediaError(); } catch(_){}
+          break;
+        default:
+          rebuildPlayer('Reconnecting to stream…');
+      }
+    });
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) return;
+    if (_rebuilding) return;
+
+    let stalled = false;
+    try {
+      const t = video.currentTime || 0;
+      const b = video.buffered;
+      let inBuffer = false;
+      for (let i = 0; i < b.length; i++) {
+        if (t >= b.start(i) && t <= b.end(i) + 0.5) { inBuffer = true; break; }
+      }
+      stalled = !inBuffer || video.readyState < 2;
+    } catch(e) { stalled = true; }
+
+    if (stalled) {
+      rebuildPlayer('Reconnecting to stream…');
+    } else if (video.paused) {
+      video.play().catch(() => {});
+    } else if (hls && typeof hls.liveSyncPosition === 'number') {
+      try {
+        const target = hls.liveSyncPosition;
+        if (target && video.currentTime < target - 20) video.currentTime = target;
+      } catch(e) {}
+    }
+  });
+
+  video.addEventListener('play',  () => { setTimeout(() => { wm.style.opacity = '.30'; }, 3000); });
+  video.addEventListener('pause', () => { wm.style.opacity = '.55'; });
+  document.addEventListener('mousemove', () => {
+    wm.style.opacity = '.55';
+    clearTimeout(window._wmTimer);
+    window._wmTimer = setTimeout(() => { if (!video.paused) wm.style.opacity = '.30'; }, 3000);
+  });
+  document.addEventListener('touchstart', () => {
+    wm.style.opacity = '.55';
+    clearTimeout(window._wmTimer);
+    window._wmTimer = setTimeout(() => { if (!video.paused) wm.style.opacity = '.30'; }, 3000);
+  });
+
+  startPlayback(DIRECT_SRC);
+
+})();
+</script>
+</body>
+</html>
